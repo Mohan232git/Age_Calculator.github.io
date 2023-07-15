@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <div  class="container">
+       <!--  <h3 class="heading">Age Calculator:</h3> -->
+        <form action="#">
+            <div class="div-form">
+                <label for="Day">Day</label>
+                <input type="text" name="Day" id="Day" placeholder="DD" autocomplete="off" required>
+            </div>
+             <div class="div-form"> <label for="Month">Month</label>
+        <input type="text" name="Month" id="Month" placeholder="MM" autocomplete="off" required>
+             </div>
+           
+        <div class="div-form">
+           <div class="inner-div">
+            <label for="Year">Year</label>
+            <input type="text" name="Year" id="Year" placeholder="YYYY" required autocomplete="off" required >
+           </div>
+        </div>
+        </form>
+        
+        
+          <div class="arrow">
+        <hr >
+       <button id="btn" onclick="agecal()" >&#8595;</button>
+         </div>
+         
+         
+        
+
+        <div class="content">
+            <div><p id="years">--</p></p ><h2>years</h2></div>
+            <div><p id="months">--</p  ><h2 >months</h2></div>
+            <div><p  id="days">--</p> <h2>days</h2></div>
+    
+         </div>
+
+
+
+
+
+
+<script src="functionalities.js"></script>
+         
+</body>
+</html>
