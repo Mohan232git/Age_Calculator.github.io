@@ -1,33 +1,39 @@
-function yearcal(brith_year , brith_date, brith_month) {
+/* function yearcal(brith_year , brith_date, brith_month) {
     let date= new Date() ;
     let todayDate = date.getDate() ;
     let present_date = date.getDate();
     let present_month = date.getMonth()+1;
     let count_date = 0;
-    let nothing = 0 ;
-    let Year = date.getFullYear() - brith_year;
+   /*  let nothing = 0 ; */
+    /* let Year = date.getFullYear() - brith_year;
     if(brith_month <= present_month && brith_date <= present_date)  {
         if (brith_date==present_date && brith_month == present_month ) {
                 
-                present_date = nothing ;
-            return[present_date , Year ]
-        }
+                present_date = 0 ;
+            return[Year,present_date ]
+        } */
+
+        /* else if(brith_month < present_month) {
+            Year++;
+            return[Year, present_date]
+
+        } 
         else if(brith_month == present_month && brith_date < present_date) {
             let differ = present_date - brith_date;
             
-            return[differ,Year] ;
+            return[Year,differ] ;
         }
       
         else {
 
             Year;
-            return[present_date ,Year]
+            return[Year]
         }
         
     }
     else {
         Year--;
-        return [present_date , Year] ;
+        return [Year , present_date] ;
     }
 
 }
@@ -50,7 +56,7 @@ function monthcount(brith_month , brith_date ) {
         }
         else {
             return new_count_month ;
-        }
+        } 
         
     }
   
@@ -71,11 +77,53 @@ function monthcount(brith_month , brith_date ) {
     
    }
 
+ */
+
+   function agecalculator(brith_date,brith_Month,brith_year) {
+
+        const inputdate = brith_date ;
+        const inputmonth = brith_Month ;
+        const inputyear = brith_year ;
+        let newDate = new Date()
+        const presentdate = newDate.getDate() ;
+        const presentmonth = newDate.getMonth()+1;
+        const presentyear = newDate.getFullYear();
+        let maxmonth = 12 ;
+        let tempmonth = inputmonth 
+        console.log(presentdate , presentmonth,presentyear);
+        console.log( inputdate , inputmonth,inputyear);
+        if(inputyear <= presentyear) {
+            if(inputmonth <= presentmonth) {
+                if(inputmonth <= presentmonth) {
+                    if( inputmonth===presentmonth) {
+                        if(inputdate===presentdate){
+                            console.log('its your brithday');
+                        }
+                        if(inputdate > presentdate) {
+                            console.log('your brith is yet to come');
+                        }
+                        if(inputdate < presentdate) {
+                            console.log( 'your brithday is passed',presentyear-inputyear);
+                        }
+                    }
+                    
+                    
+                }
+                
+            
+            }
+            else if(inputmonth > presentmonth){
+                console.log('your brithday is to yet come',inputmonth);
+                }
+        }
 
 
 
+   }
 
-function agecal() {
+
+
+function render() {
     let date = new Date();
     let present_month = date.getMonth()+1 ;
     const brith_year = Number( document.getElementById('Year').value );
@@ -87,11 +135,12 @@ function agecal() {
     
     
     if(yearidentifier()==true && monthidentifier()==true && dateidentifier()==true && isemty()==false){
-        let tempYear =yearcal(brith_year , brith_date,brith_Month) ;
+        /* et tempYear =yearcal(brith_year , brith_date,brith_Month) ;
         let tempMonth =monthcount(brith_Month,brith_date) ;
-        display_Years.innerHTML = tempYear[1] ;
+        display_Years.innerHTML = tempYear[0] ;
         display_month.innerHTML = tempMonth ;
-        display_days.innerHTML = tempYear[0] ;
+        display_days.innerHTML = tempYear[1] ; */
+        agecalculator(brith_date,brith_Month,brith_year);
     }
 }
 
@@ -176,11 +225,11 @@ function isemty(){
 
 addEventListener('keydown',function(event){
         if(event.keyCode==13) {
-            agecal();
+            render();
         }
 }) 
 
-
+/* agecalculator(); */
 
 
 
