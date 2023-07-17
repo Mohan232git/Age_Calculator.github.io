@@ -79,68 +79,105 @@ function monthcount(brith_month , brith_date ) {
 
  */
 
-   function agecalculator(brith_date,brith_Month,brith_year) {
+   function agecalculator(birth_date,birth_Month,birth_year) {
 
-        const inputdate = brith_date ;
-        const inputmonth = brith_Month ;
-        const inputyear = brith_year ;
+        const birthdate = birth_date ;
+        const birthmonth = birth_Month ;
+        const birthyear = birth_year ;
         let newDate = new Date()
         const presentdate = newDate.getDate() ;
         const presentmonth = newDate.getMonth()+1;
         const presentyear = newDate.getFullYear();
+        let display_Years = document.getElementById('years') ;
+        let display_month = document.getElementById('months') ;
+        let display_days = document.getElementById('days') ;
         let maxmonth = 12 ;
-        let tempmonth = inputmonth 
+        let tempvar = 0 ;
+        let tempMonths = 0;
+        let  tempYears = 0;
+        let tempDays=0;
         console.log(presentdate , presentmonth,presentyear);
-        console.log( inputdate , inputmonth,inputyear);
-        if(inputyear <= presentyear) {
-            if(inputmonth <= presentmonth) {
-                if(inputmonth <= presentmonth) {
-                    if( inputmonth===presentmonth) {
-                        if(inputdate===presentdate){
-                            console.log('its your brithday');
+        console.log( birthdate , birthmonth,birthyear);
+        if(birthyear <= presentyear) {
+            if(birthmonth <= presentmonth) {
+                    if( birthmonth===presentmonth) {
+                        if(birthdate===presentdate){
+                            /* console.log('its your brithday'); */
+                            tempDays=0;
+                            tempMonths=0;
+                            tempYears = presentyear - birthyear ;
+                            display_Years.innerText = tempYears ;
+                            display_days.innerText = tempDays ;
+                            display_month.innerText = tempMonths; 
                         }
-                        if(inputdate > presentdate) {
-                            console.log('your brith is yet to come');
+                        if(birthdate > presentdate) {
+                            /* console.log('your brith is yet to come'); */
+                            
+                            for(i = birthmonth ; i< maxmonth ; i++) {
+                                tempvar++ ; 
+                            }
+                            tempYears = presentyear - birthyear ;
+                            tempMonths= tempvar + presentmonth;
+                            tempDays = presentdate ;
+                            display_Years.innerText = tempYears - 1 ;
+                            display_days.innerText = tempDays ;
+                            display_month.innerText = tempMonths; 
                         }
-                        if(inputdate < presentdate) {
-                            console.log( 'your brithday is passed',presentyear-inputyear);
+                        if(birthdate < presentdate) {
+                            /* console.log( 'your brithday is passed',presentyear-inputyear); */
+                            tempYears = presentyear - birthyear ;
+                            tempMonths= 0;
+                            tempDays = presentdate ;
+                            display_Years.innerText = tempYears ;
+                            display_days.innerText = presentdate - birthdate;
+                            display_month.innerText = tempMonths;
+                            
                         }
+                    }  
+
+                    if(birthmonth < presentmonth) {
+                            tempYears = presentyear - birthyear ;
+                            tempMonths = presentmonth - birthmonth ;
+                            display_Years.innerText = tempYears ;
+                            display_month.innerText = tempMonths;
+                            display_days.innerText = presentdate ;
                     }
-                    
-                    
                 }
-                
-            
+            if(birthmonth > presentmonth){
+                for(i = birthmonth ; i< maxmonth ; i++) {
+                    tempvar++ ; 
+                }
+                let monthCount = tempvar + presentmonth ;
+                let yearCount = presentyear - birthyear - 1 ;
+                /* console.log('its been ',monthCount + ' months since your last brithday ');
+                console.log('your ' + yearCount + ' old')
+                } */
+                display_Years.innerText = yearCount ;
+                display_month.innerText = monthCount ;
+                display_days.innertext =  presentdate ;
             }
-            else if(inputmonth > presentmonth){
-                console.log('your brithday is to yet come',inputmonth);
-                }
+            
         }
 
+    }
 
-
-   }
+   
 
 
 
 function render() {
     let date = new Date();
     let present_month = date.getMonth()+1 ;
-    const brith_year = Number( document.getElementById('Year').value );
-    const brith_Month = Number(document.getElementById('Month').value );
-    const brith_date= Number(document.getElementById('Day').value) ;
-    let display_Years = document.getElementById('years') ;
-    let display_month = document.getElementById('months') ;
-    let display_days = document.getElementById('days') ;
-    
-    
+    const birth_year = Number( document.getElementById('Year').value );
+    const birth_Month = Number(document.getElementById('Month').value );
+    const birth_date= Number(document.getElementById('Day').value) ;
     if(yearidentifier()==true && monthidentifier()==true && dateidentifier()==true && isemty()==false){
         /* et tempYear =yearcal(brith_year , brith_date,brith_Month) ;
         let tempMonth =monthcount(brith_Month,brith_date) ;
         display_Years.innerHTML = tempYear[0] ;
         display_month.innerHTML = tempMonth ;
         display_days.innerHTML = tempYear[1] ; */
-        agecalculator(brith_date,brith_Month,brith_year);
+        agecalculator(birth_date,birth_Month,birth_year);
     }
 }
 
